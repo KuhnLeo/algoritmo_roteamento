@@ -28,4 +28,6 @@ Com 'docker ps -a' pode ser verificado os containers da VM
 
 **4 - Configuração dos roteadores**
 
+Para ler o PID do container: 'docker inspect -f '{{.State.Pid}}' router-a'
+
 Para enxergar os namespaces do docker precisamos fazer 'sudo ln -sf /proc/$pid/ns/net /var/run/netns/router-a`
