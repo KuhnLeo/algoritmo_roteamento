@@ -37,4 +37,4 @@ Para enxergar os namespaces do docker precisamos fazer 'sudo ln -sf /proc/$pid/n
 
 Cria um par de rede com os nomes veth-a1 e veth-pc0-1 -> 'sudo ip link add veth-a1(nome) type veth peer name veth-pc0-1'
 
-Mover as pontas para os namespaces correspondentes -> 'sudo ip link set veth-a1 netns router-a'; 'sudo ip link set veth0pc0-1 netns pc0'
+Mover as pontas para os namespaces correspondentes -> 'sudo ip link set veth-a1 netns router-a'; 'sudo ip link set veth-pc0-1 netns pc0'
