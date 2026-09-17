@@ -4,6 +4,14 @@ Trabalho para a matéria de Redes de Computadores: Internetworking, Roteamento e
 # Tracking
 **1 - Efetuado instalação do Ubuntu 22.04 via Virtual Box, atualizado pacotes pelo terminal e instalado docker e container lab e baixado a imagem do frrouting e alpine (imagem é mais leve que a do FRRouting, 13mb vs 230mb)**
 
+docker apt update
+
+docker apt upgrade
+
+docker pull alpine:latest /// frrouting/frr:latest
+
+Para conferir se as imagens instalaram normalmente: terminal -> docker images
+
 
 **2 - Criado bridges para os switches:**
 
@@ -14,4 +22,4 @@ sudo ip link add name switch0/switch1 type bridge $$ sudo ip link set switch0/sw
 
 docker run -d --name router-a(b,c,d,e) --network none --cap-add=NET_ADMIN frrouting/frr:latest
 
-docker run -d --name pc0 --network none --cap-add=NET_ADMIN alpine:latest sleep infinity
+docker run -d --name pc0(1,2,3) --network none --cap-add=NET_ADMIN alpine:latest sleep infinity
