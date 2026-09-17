@@ -2,7 +2,7 @@
 Trabalho para a matéria de Redes de Computadores: Internetworking, Roteamento e Transmissão
 
 # Tracking
-**1 - Efetuado instalação do Ubuntu 22.04 via Virtual Box, atualizado pacotes pelo terminal e instalado docker e container lab e baixado a imagem do frrouting e alpine (imagem é mais leve que a do FRRouting, 13mb vs 230mb)**
+**1 - Efetuado instalação do Ubuntu 26.04.1 LTS via Virtual Box, atualizado pacotes pelo terminal e instalado docker e container lab e baixado a imagem do frrouting e alpine (imagem é mais leve que a do FRRouting, 13mb vs 230mb)**
 
 'docker apt update'
 
