@@ -26,8 +26,15 @@ Para conferir se as imagens instalaram normalmente: 'docker images'
 
 Com 'docker ps -a' pode ser verificado os containers da VM
 
-**4 - Configuração dos roteadores**
+**4 - Renomeando os roteadores**
 
 Para ler o PID do container: 'docker inspect -f '{{.State.Pid}}' router-a'
 
 Para enxergar os namespaces do docker precisamos fazer 'sudo ln -sf /proc/$pid/ns/net /var/run/netns/router-a`
+
+
+**5 - Criando os "cabos", par veth**
+
+Cria um par de rede com os nomes veth-a1 e veth-pc0-1 -> 'sudo ip link add veth-a1(nome) type veth peer name veth-pc0-1'
+
+Mover as pontas para os namespaces correspondentes -> 'sudo ip link set veth-a1 netns router-a'; 'sudo ip link set veth0pc0-1 netns pc0'
