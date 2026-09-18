@@ -46,7 +46,7 @@ connect_to_switch() {
   sudo ip link set "$host_iface" up
 }
 
-# Atribui os IPs corretos para cada porta
+# Chama as funções para definir as conexões dos roteadores
 echo "==> Router A"
 connect           veth-a1 router-a 192.168.0.1/24  veth-pc0 pc0      192.168.0.2/24 
 connect_to_switch veth-a0 router-a 192.168.6.1/24 switch0 veth-a0-h
