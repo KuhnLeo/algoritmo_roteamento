@@ -14,7 +14,7 @@ for c in router-a router-b router-c router-d router-e pc0 pc1 pc2 pc3; do
   sudo ln -sf /proc/"$pid"/ns/net /var/run/netns/"$c"
 done
 
-# Cria um par veth e move cada ponta para dentro do namespace do container
+# Função que cria um par veth e move cada ponta para dentro do namespace do container
 # correspondente, atribuindo IP e ativando a interface dos dois lados
 connect() {
   local iface1=$1 ns1=$2 ip1=$3
@@ -31,7 +31,7 @@ connect() {
   sudo ip netns exec "$ns2" ip link set "$iface2" up
 }
 
-# Cria um par veth onde uma ponta vai para dentro do namespace do roteador
+# Função que cria um par veth onde uma ponta vai para dentro do namespace do roteador
 # e a outra ponta fica na bridge do switch
 connect_to_switch() {
   local iface=$1 ns=$2 ip=$3 bridge=$4 host_iface=$5
