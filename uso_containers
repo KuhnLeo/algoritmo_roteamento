@@ -3,3 +3,9 @@
 Ao desligar os containers se perde toda a configuração de rede da topoplogia e precisa ser feito novamente
 
 Ficará mais fácil se criarmos um script contendo todas as configurações da topologia até o momento
+
+**Para manusear os containers:**
+
+'docker stop router-a router-b router-c router-d router-e pc0 pc1 pc2 pc3'
+
+'docker start router-a router-b router-c router-d router-e pc0 pc1 pc2 pc3'
