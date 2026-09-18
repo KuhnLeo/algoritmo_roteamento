@@ -33,8 +33,6 @@ Para ler o PID do container: 'docker inspect -f '{{.State.Pid}}' router-a'
 Para enxergar os namespaces do docker precisamos fazer 'sudo ln -sf /proc/$pid/ns/net /var/run/netns/router-a`
 
 
-**5 - Criando os "cabos", par veth**
+**5 - Executar o bash**
 
-Cria um par de rede com os nomes veth-a1 e veth-pc0-1 -> 'sudo ip link add veth-a1(nome) type veth peer name veth-pc0-1'
-
-Mover as pontas para os namespaces correspondentes -> 'sudo ip link set veth-a1 netns router-a'; 'sudo ip link set veth-pc0-1 netns pc0'
+Quando os containers forem desligados as configurações de rede serão resetadas. Para isso foi feito um arquivo 'start.sh'. Ele inicializa os dockers e os switches, recria os namespaces com o PID novo
