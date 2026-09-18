@@ -31,8 +31,8 @@ connect() {
   sudo ip netns exec "$ns2" ip link set "$iface2" up
 }
 
-# Função que cria um par veth onde uma ponta vai para dentro do namespace do roteador
-# e a outra ponta fica na bridge do switch
+# Função que cria um par veth onde uma ponta vai para dentro do roteador e a outra
+# ponta fica na bridge do switch
 connect_to_switch() {
   local iface=$1 ns=$2 ip=$3 bridge=$4 host_iface=$5
 
