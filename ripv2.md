@@ -6,7 +6,7 @@ Para cada roteador rode 'docker exec -it router-a sed -i 's/ripd=no/ripd=yes/' /
 
 Depois precisamos reiniciar cada container
 
-'docker restart router-a'
+'docker restart router-a router-b router-c router-d router-e'
 
 **2 - Configurando o RIP**
 
@@ -20,7 +20,7 @@ router rip
 
 version 2
 
-netwrok subredesIPv4/24
+netwrok <subredeIPv4>/24
 
 exit
 
@@ -30,10 +30,13 @@ write memory
 
 Talvez seja necessário rodar o start.sh novamente. Se estiver tudo OK vai rodar sem problemas
 
-**Testes:**
+**3 - Testes:**
 
 docker exec pc1 ping -c 3 192.168.2.2
 
 docker exec pc2 ping -c 3 192.168.1.2
 
 docker exec pc3 ping -c 3 192.168.0.2
+
+**4 - Desligando o RIPv2>**
+
