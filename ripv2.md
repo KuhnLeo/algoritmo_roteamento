@@ -27,3 +27,13 @@ exit
 exit
 
 write memory
+
+Talvez seja necessário rodar o start.sh novamente. Se estiver tudo OK vai rodar sem problemas
+
+**Testes:**
+
+docker exec pc1 ping -c 3 192.168.2.2
+
+docker exec pc2 ping -c 3 192.168.1.2
+
+docker exec pc3 ping -c 3 192.168.0.2
