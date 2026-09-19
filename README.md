@@ -20,7 +20,7 @@ Para conferir se as imagens instalaram normalmente: 'docker images'
 
 **3 - Setado os containers para configuração posterior**
 
-'docker run -d --name router-a(b,c,d,e) --network none --cap-add=NET_ADMIN frrouting/frr:latest'
+'docker run -d --name router-a(b,c,d,e) --network none --cap-add=NET_ADMIN --cap-add=SYS_ADMIN frrouting/frr:latest'
 
 'docker run -d --name pc0(1,2,3) --network none --cap-add=NET_ADMIN alpine:latest sleep infinity'
 
