@@ -10,3 +10,16 @@ Pode ser necessário rodar o start.sh novamente
 
 **2 - Configurando o OSPF**
 
+'docker exec -it router-a vtysh'
+
+configure terminal
+
+router ospf
+
+network <subredeIPv4>/24 area 0
+
+exit
+
+exit
+
+write memory
