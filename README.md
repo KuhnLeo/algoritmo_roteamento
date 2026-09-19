@@ -15,7 +15,7 @@ Para conferir se as imagens instalaram normalmente: 'docker images'
 
 **2 - Criado bridges para os switches:**
 
-'sudo ip link add name switch0/switch1 type bridge $$ sudo ip link set switch0/switch1 up'
+'sudo ip link add name switch0/switch1 type bridge && sudo ip link set switch0/switch1 up'
 
 
 **3 - Setado os containers para configuração posterior**
