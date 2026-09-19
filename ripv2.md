@@ -4,8 +4,9 @@
 
 Para cada roteador rode 'docker exec -it router-a sed -i 's/ripd=no/ripd=yes/' /etc/frr/daemons'
 
-Depois precisamos reiniciar o serviço do FRR dentro de cada container
+Depois precisamos reiniciar cada container
 
+'docker restart router-a'
 
 **2 - Configurando o RIP**
 
