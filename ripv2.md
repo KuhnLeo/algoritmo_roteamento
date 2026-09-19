@@ -28,6 +28,7 @@ exit
 
 write memory
 
+Possivelmente algum dos comandos vão retornar algo como "% Can't open configuration ou % Unknown comand, mas é só ignorar.
 Talvez seja necessário rodar o start.sh novamente. Se estiver tudo OK vai rodar sem problemas
 
 **3 - Testes:**
@@ -40,3 +41,10 @@ docker exec pc3 ping -c 3 192.168.0.2
 
 **4 - Desligando o RIPv2>**
 
+'docker exec router-a vtysh -c "configure terminal" -c "no router rip" -c "write memory"'
+
+Para ver se deu certo é só fazer:
+
+'docker exec router-a vtysh -c "show running-config"
+
+'docker exec router-a vtysh -c "show ip route rip"
