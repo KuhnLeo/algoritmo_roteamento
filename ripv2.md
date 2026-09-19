@@ -15,9 +15,15 @@ Precisamos entrar na área de configuração específica, para isso rode
 'docker exec -it router-a vtysh'
 
 configure terminal
+
 router rip
+
 version 2
+
 netwrok subredesIPv4/24
+
 exit
+
 exit
+
 write memory
