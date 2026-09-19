@@ -2,6 +2,8 @@ set -e
 
 echo "==> Iniciando os containers e bridges"
 docker start router-a router-b router-c router-d router-e pc0 pc1 pc2 pc3
+sudo ip link add name switch0 type bridge
+sudo ip link add name switch1 type bridge
 sudo ip link set switch0 up
 sudo ip link set switch1 up
 
