@@ -31,3 +31,13 @@ docker exec pc1 ping -c 3 192.168.2.2
 docker exec pc2 ping -c 3 192.168.1.2
 
 docker exec pc3 ping -c 3 192.168.0.2
+
+**4 -  Desligando OSPF**
+
+'docker exec router-a vtysh -c "configure terminal" -c "no router ospf" -c "write memory"'
+
+Teste com:
+
+'docker exec router-a vtysh -c "show running-config"'
+
+'docker exec router-a vtysh -c "show ip route ospf"'
