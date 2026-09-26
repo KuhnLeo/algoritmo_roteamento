@@ -16,7 +16,7 @@ configure terminal
 
 router ospf
 
-network <subredeIPv4>/24 area 0
+network "subredeIPv4"/24 area 0
 
 exit
 
