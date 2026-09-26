@@ -8,7 +8,7 @@ sudo ip link set switch0 up
 sudo ip link set switch1 up
 
 echo "==> Reexpondo os namespaces de rede dos containers"
-# Toda vez que reiniciar ele cria PIDs novos, assim ele pode renomear os namespaces sem problemas
+# Toda vez que reiniciar ele cria PIDs novos, assim ele pode nomear os namespaces sem problemas
 sudo mkdir -p /var/run/netns
 for c in router-a router-b router-c router-d router-e pc0 pc1 pc2 pc3; do
   pid=$(docker inspect -f '{{.State.Pid}}' "$c")
