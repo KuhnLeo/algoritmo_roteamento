@@ -8,16 +8,14 @@ sudo ip link set switch0 up
 sudo ip link set switch1 up
 
 echo "==> Reexpondo os namespaces de rede dos containers"
-# Toda vez que reiniciar ele cria PIDs novos, assim ele pode renomear os namespaces
-# sem problemas
+# Toda vez que reiniciar ele cria PIDs novos, assim ele pode renomear os namespaces sem problemas
 sudo mkdir -p /var/run/netns
 for c in router-a router-b router-c router-d router-e pc0 pc1 pc2 pc3; do
   pid=$(docker inspect -f '{{.State.Pid}}' "$c")
   sudo ln -sf /proc/"$pid"/ns/net /var/run/netns/"$c"
 done
 
-# Função que cria um par veth e move cada ponta para dentro do namespace do container
-# correspondente, atribuindo IP e ativando a interface dos dois lados
+# Função que cria um par veth e move cada ponta para dentro do namespace do container correspondente, atribuindo IP e ativando a interface dos dois lados
 connect() {
   local iface1=$1 ns1=$2 ip1=$3
   local iface2=$4 ns2=$5 ip2=$6
@@ -33,8 +31,7 @@ connect() {
   sudo ip netns exec "$ns2" ip link set "$iface2" up
 }
 
-# Função que cria um par veth onde uma ponta vai para dentro do roteador e a outra
-# ponta fica na bridge do switch
+# Função que cria um par veth onde uma ponta vai para dentro do roteador e a outra ponta fica na bridge do switch
 connect_to_switch() {
   local iface=$1 ns=$2 ip=$3 bridge=$4 host_iface=$5
 
@@ -84,4 +81,4 @@ sudo ip netns exec pc2 ip route add default via 192.168.2.1
 sudo ip netns exec pc3 ip route add default via 192.168.3.1
 
 echo ""
-echo "==> Pronto"
+echo "==> Pronto seu tonto"
