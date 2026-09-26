@@ -20,7 +20,7 @@ router rip
 
 version 2
 
-network <subredeIPv4>/24
+network "subredeIPv4"/4
 
 exit
 
