@@ -1,20 +1,40 @@
-## Pré-requisitos
-1 - Ambiente de rede já montado : 5 roteadores e 4 PCs rodando como containers Docker.
-2 - Python 3 instalado.
+# Algoritmo próprio de roteamento (videogame_algoritmo.py)
+ 
+Cada roteador roda uma cópia do script `videogame_algoritmo.py`. Elas trocam
+informação entre vizinhos por UDP e cada roteador instala as próprias rotas.
+ 
+## Passo a passo
+ 
+**1. Subir a rede**:
+ 
+```
+sudo ./start.sh
+```
+ 
+Se rodar o `start.sh` uma segunda vez sem reiniciar a VM, apague as bridges antes:
+ 
+```
+sudo ip link delete switch0
+sudo ip link delete switch1
+```
+ 
+**2. Copiar o script para dentro dos 5 roteadores:**
+ 
+```
+for r in router-a router-b router-c router-d router-e; do
+  docker cp videogame_algoritmo.py $r:/videogame_algoritmo.py
+done
+```
+ 
+**3. Iniciar o algoritmo em cada roteador:**
+ 
+```
+for r in router-a router-b router-c router-d router-e; do
+  docker exec -d $r sh -c "python3 /videogame_algoritmo.py --router $r --life 15 > /tmp/life.log 2>&1"
+done
+```
+ 
+- `--life`: vida máxima (custo acumulado a partir do qual a rota é descartada). Precisa ser o **mesmo valor nos 5 roteadores**.
+- Sem `--manual`: mede a latência real com ping (usar nos testes).
+- Com `--manual`: usa os pesos fixos que estão dentro do script (usar só para demonstrar).
 
-## Como rodar
- 
-1 - Rode o algoritmo indicando o PC de origem e o de destino:
-```
-   sudo python3 life_routing.py --src pc0 --dst pc3 --manual --life 15 --test
-```
- 
-   Parâmetros:
-   - `--src` / `--dst`: PCs de origem e destino (`pc0`, `pc1`, `pc2`, `pc3`)
-   - `--life`: vida inicial do pacote
-   - `--manual`: usa pesos de latência pré-definidos no script (edite a
-     constante `MANUAL_WEIGHTS` em `life_routing.py` para simular links
-     bons/ruins). Sem essa flag, o script mede a latência real entre os
-     roteadores com `ping`.
-   - `--test`: depois de aplicar as rotas, faz um ping do PC de origem
-     até o de destino para confirmar que a rota funcionou de ponta a ponta.
